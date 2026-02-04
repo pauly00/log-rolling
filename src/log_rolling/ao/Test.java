@@ -18,7 +18,7 @@ public class Test {
         System.out.println("Starting Application Operation Log Simulation...");
 
         // 2. 1000번 반복하기 (로그 1000줄 쌓기)
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 1; i <= 1000000; i++) {
             
             // [단계 1] 가짜 로그 데이터 하나 만들기
             // 아래에 있는 'randomAoLog' 함수를 시켜서 임의의 데이터를 받아옵니다.
@@ -32,7 +32,7 @@ public class Test {
             // [단계 3] 잠깐 쉬기 (0.005초)
             // 컴퓨터가 너무 빨라서 순식간에 끝나버리면 로그 시간을 확인하기 어려우니
             // 아주 잠깐씩 텀을 줍니다.
-            Thread.sleep(5); 
+            Thread.sleep(1); 
         }
 
         System.out.println("Done. Check logs/ao/app-ops.log and archive folder.");
