@@ -10,6 +10,22 @@
     </encoder>
   </appender>
 
+  <!-- 운영로그 전용 파일 appender -->
+  <appender name="AO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${LOG_DIR}/ao/app-ops.log</file>
+    
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>${LOG_DIR}/ao/backup/app-ops-%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+        <maxFileSize>10MB</maxFileSize>
+      <maxHistory>14</maxHistory> </rollingPolicy>
+
+    <encoder>
+        <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] [%X{traceId}] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+
+
   <!-- 거래로그 전용 파일 appender -->
   <appender name="TXN_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${LOG_DIR}/txn/txn.log</file>
@@ -27,6 +43,11 @@
       <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %msg%n</pattern>
     </encoder>
   </appender>
+
+  <logger name="ApplicationLogger" level="INFO" additivity="false">
+    <appender-ref ref="AO_FILE" />
+    <appender-ref ref="STDOUT" />
+  </logger>
 
   <!-- TXN_LOGGER로 찍힌 로그만 txn.log로 분리 -->
   <logger name="TXN_LOGGER" level="INFO" additivity="false">
