@@ -6,14 +6,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class TransactionAuditLogger {
-	private static final Logger logger = LoggerFactory.getLogger("TXN_LOGGER");
+	private final Logger logger;
 
 	public TransactionAuditLogger() {
-
+		this.logger = LoggerFactory.getLogger("TXN_LOGGER");
 	}
 
-	public static String getTxnId() {
-		return UUID.randomUUID().toString();
+	public void log(TxnLog txnLog) {
+
+		if (txnLog.getResult().equals("SUCCESS")) {
+			logger.info("txnId={} username={} account={} amount={} result={}", 
+						txnLog.getTxnId(),
+						txnLog.getUsername(), 
+						txnLog.getAccountMasked(), 
+						txnLog.getAmount(), 
+						txnLog.getResult()
+					);
+		} else {
+			logger.warn("txnId={} username={} account={} amount={} result={}", 
+					txnLog.getTxnId(),
+					txnLog.getUsername(), 
+					txnLog.getAccountMasked(), 
+					txnLog.getAmount(), 
+					txnLog.getResult()
+					);
+		}
 	}
 
 }
