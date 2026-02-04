@@ -1,11 +1,20 @@
 package log_rolling.txn;
 
+
 public class TxnLog {
-	private String txnId; // UUID
-	private String username; // 이미 넣었다고 했으니 OK
-	private long amount; // 랜덤
-	private String accountMasked; // 12****34
-	private String result; // SUCCESS / FAIL
+	private String txnId;
+	private String username;
+	private long amount;
+	private String accountNumber;  
+	private String result; // SUCCECC/FAIL 
+
+	public TxnLog(String txnId, String username, long amount, String accountNumber, String result) {
+		this.txnId = txnId;
+		this.username = username;
+		this.amount = amount;
+		this.accountNumber = accountNumber;
+		this.result = result;
+	}
 
 	public String getTxnId() {
 		return txnId;
@@ -19,22 +28,11 @@ public class TxnLog {
 		return amount;
 	}
 
-	public String getAccountMasked() {
-		return accountMasked;
+	public String getAccountNumber() {
+		return accountNumber;
 	}
 
 	public String getResult() {
 		return result;
 	}
-
-
-	public TxnLog(String txnId, String username, long amount, String accountMasked, String result) {
-		super();
-		this.txnId = txnId;
-		this.username = username;
-		this.amount = amount;
-		this.accountMasked = accountMasked;
-		this.result = result;
-	}
-
 }
