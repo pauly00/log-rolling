@@ -36,7 +36,7 @@ log-rolling
 | 구분 | 거래 로그 (TXN) | 운영 로그 (AO) |
 | --- | --- | --- |
 | **목적** | 금융 거래 증적, 데이터 무결성 확인 | 장애 분석, 트러블슈팅, 흐름 추적 |
-| **롤링 정책** | 10MB 도달 시 or 일 단위 | 10MB 도달 시 or 일 단위 |
+| **롤링 정책** | 10MB 도달 시 | 10MB 도달 시 |
 | **주요 특징** | 민감정보(계좌 등) **마스킹 처리** | **Trace ID**를 통한 요청 흐름 추적 |
 
 ---
@@ -160,9 +160,9 @@ public class ApplicationLogger {
 
 ```
 
-**AO 로그 (Trace ID 포함됨):**
+**AO 로그:**
 
 ```text
-2026-02-04 15:30:00 [main] [trace-id-xyz] INFO l.r.ao.ApplicationLogger - [GET] /api/user - OK (Exec: 50ms)
+2026-02-04 15:30:00 [main] INFO l.r.ao.ApplicationLogger - [GET] /api/user - OK (Exec: 50ms)
 
 ```
