@@ -160,9 +160,9 @@ public class ApplicationLogger {
 
 ```
 
-**AO 로그:**
+**AO 로그(TraceID 포함됨)**
 
 ```text
-2026-02-04 15:30:00 [main] INFO l.r.ao.ApplicationLogger - [GET] /api/user - OK (Exec: 50ms)
+[trace-id-xyz] 2026-02-04 15:30:00 [main] INFO l.r.ao.ApplicationLogger - [GET] /api/user - OK (Exec: 50ms)
 
 ```
